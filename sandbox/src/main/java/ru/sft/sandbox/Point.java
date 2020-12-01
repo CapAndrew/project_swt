@@ -1,4 +1,4 @@
-package tu.sft.sandbox;
+package ru.sft.sandbox;
 
 public class Point {
 
