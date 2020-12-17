@@ -1,4 +1,4 @@
-package ru.sft.sandbox;
+package ru.swt.sandbox;
 
 public class MyFirstProgram {
 

@@ -1,4 +1,4 @@
-package ru.sft.sandbox;
+package ru.swt.sandbox;
 
 import org.junit.Assert;
 import org.junit.Test;
