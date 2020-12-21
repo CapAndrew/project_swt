@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class ContactCreationTests {
+public class ContactsCreationTests {
 	private WebDriver wd;
 
 	@BeforeMethod(alwaysRun = true)
@@ -24,7 +24,7 @@ public class ContactCreationTests {
 	}
 
 	@Test
-	public void testContactCreation() throws Exception {
+	public void testContactsCreation() throws Exception {
 
 		initNewContactCreation();
 		fillContactForm(new ContactData(
