@@ -28,10 +28,10 @@ public class ContactCreationTests extends TestBase {
 						"Test Phone2",
 						"Test Notes",
 						"1",
-						"January",
-						"1980",
+						"May",
+						"1982",
 						"1",
-						"January",
+						"March",
 						"1980"));
 		app.getContactHelper().submitContactCreation();
 		app.getContactHelper().goToHomePage();
