@@ -39,6 +39,6 @@ public class ContactModificationTests extends TestBase {
 						false
 		);
 		app.getContactHelper().submitContactModification();
-		app.getContactHelper().goToHomePage();
+		app.getNavigationHelper().goToHomePage();
 	}
 }

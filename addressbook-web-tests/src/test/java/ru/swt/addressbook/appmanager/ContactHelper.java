@@ -12,10 +12,6 @@ public class ContactHelper extends HelperBase {
 		super(wd);
 	}
 
-	public void goToHomePage() {
-		click(By.linkText("home page"));
-	}
-
 	public void submitContactCreation() {
 		click(By.xpath("(//input[@name='submit'])[2]"));
 	}
