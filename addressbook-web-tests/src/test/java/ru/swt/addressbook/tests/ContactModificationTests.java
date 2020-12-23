@@ -9,6 +9,36 @@ public class ContactModificationTests extends TestBase {
 	public void testContactModification() throws InterruptedException {
 		//Указывать в формате [*], где * в квадратных скобках - позиция контакта в списке.
 		//Если контакт первый - указывать пустое значение
+		if(!app.getContactHelper().isThereAContact()){
+			app.getContactHelper().createContact(new ContactData(
+											"Test Name",
+											"Test Surname",
+											"Test Lastname",
+											"Test Nick",
+											"Test Title",
+											"Test Company",
+											"Test Address",
+											"Test Home",
+											"Test Mobile",
+											"Test Work",
+											"Test Fax",
+											"Test@email.com",
+											"Test2@email.com",
+											"Test3@email.com",
+											"asd",
+											"Test Address2",
+											"Test Phone2",
+											"Test Notes",
+											"1",
+											"May",
+											"1982",
+											"1",
+											"March",
+											"1980",
+											"test1"),
+							true);
+			app.getNavigationHelper().goToHomePage();
+		}
 		app.getContactHelper().initContactModification("");
 		app.getContactHelper().fillContactForm(new ContactData(
 										"Test Name1",
