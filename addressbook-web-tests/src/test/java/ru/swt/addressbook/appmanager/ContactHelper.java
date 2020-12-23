@@ -1,6 +1,6 @@
 package ru.swt.addressbook.appmanager;
 
-import model.ContactData;
+import ru.swt.addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

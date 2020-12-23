@@ -1,6 +1,6 @@
 package ru.swt.addressbook.tests;
 
-import model.ContactData;
+import ru.swt.addressbook.model.ContactData;
 import org.testng.annotations.Test;
 
 public class ContactModificationTests extends TestBase {

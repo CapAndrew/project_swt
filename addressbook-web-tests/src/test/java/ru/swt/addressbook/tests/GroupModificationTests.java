@@ -1,6 +1,6 @@
 package ru.swt.addressbook.tests;
 
-import model.GroupData;
+import ru.swt.addressbook.model.GroupData;
 import org.testng.annotations.Test;
 
 public class GroupModificationTests extends TestBase {
