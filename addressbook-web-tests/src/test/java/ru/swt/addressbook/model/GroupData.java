@@ -28,7 +28,6 @@ public class GroupData {
 		this.id = id;
 	}
 
-
 	public String getName() {
 		return name;
 	}

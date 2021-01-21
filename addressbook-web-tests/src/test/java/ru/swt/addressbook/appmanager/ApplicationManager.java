@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
 	private WebDriver wd;
 
+	public final long IMPL_TIME = 1;
+
 	private ContactHelper contactHelper;
 	private NavigationHelper navigationHelper;
 	private GroupHelper groupHelper;
@@ -29,7 +31,7 @@ public class ApplicationManager {
 		} else if (browser.equals(BrowserType.IE)) {
 			wd = new InternetExplorerDriver();
 		}
-		wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		wd.manage().timeouts().implicitlyWait(IMPL_TIME, TimeUnit.SECONDS);
 		wd.get("https://localhost/addressbook/index.php");
 		groupHelper = new GroupHelper(wd);
 		navigationHelper = new NavigationHelper(wd);
