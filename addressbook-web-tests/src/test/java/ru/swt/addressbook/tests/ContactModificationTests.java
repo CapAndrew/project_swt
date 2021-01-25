@@ -1,6 +1,7 @@
 package ru.swt.addressbook.tests;
 
 import org.junit.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.swt.addressbook.model.ContactData;
 
@@ -9,8 +10,8 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase {
 
-	@Test
-	public void testContactModification() throws InterruptedException {
+	@BeforeMethod
+	public void ensurePreconditions() {
 		if (!app.getContactHelper().isThereAContact()) {
 			app.getContactHelper().createContact(new ContactData(
 											"Test Name",
@@ -41,11 +42,13 @@ public class ContactModificationTests extends TestBase {
 							true);
 			app.getNavigationHelper().goToHomePage();
 		}
+	}
+
+	@Test
+	public void testContactModification() throws InterruptedException {
+
 		List<ContactData> before = app.getContactHelper().getContactList();
-		//Указывать в формате [*], где * в квадратных скобках - позиция контакта в списке.
-		//Если контакт первый - указывать пустое значение
 		int positionOfContact = 0;
-		app.getContactHelper().initContactModification(positionOfContact);
 		ContactData newContactData = new ContactData(
 						before.get(positionOfContact).getId(),
 						"Test Name1",
@@ -73,16 +76,16 @@ public class ContactModificationTests extends TestBase {
 						"May",
 						"1982",
 						null);
-		app.getContactHelper().fillContactForm(newContactData,
-						false
-		);
-		app.getContactHelper().submitContactModification();
-		app.getNavigationHelper().goToHomePage();
+
+		app.getContactHelper().modifyContact(positionOfContact, newContactData);
 		app.getContactHelper().waitForLoadingHomePage();
+
 		List<ContactData> after = app.getContactHelper().getContactList();
 		Assert.assertEquals(after.size(), before.size());
 
-		before.remove(before.size() - 1);
+		app.getContactHelper().setShortImplicityWait();
+
+		before.remove(positionOfContact);
 		before.add(newContactData);
 
 		Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());

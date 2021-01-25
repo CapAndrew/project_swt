@@ -43,7 +43,7 @@ public class ContactCreationTests extends TestBase {
 						"test1");
 
 		app.getContactHelper().createContact(contact,true);
-		app.getNavigationHelper().goToHomePage();
+		app.getContactHelper().goToHomePage();
 
 		List<ContactData> after = app.getContactHelper().getContactList();
 		Assert.assertEquals(after.size(), before.size() + 1);

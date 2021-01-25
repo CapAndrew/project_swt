@@ -1,11 +1,11 @@
 package ru.swt.addressbook.appmanager;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.swt.addressbook.model.ContactData;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +73,7 @@ public class ContactHelper extends HelperBase {
 	public void initContactModification(int position) {
 		if (position == 0) {
 			click(By.xpath("(//img[@alt='Edit'])"));
-		}else{
+		} else {
 			click(By.xpath("(//img[@alt='Edit'])" + position));
 		}
 	}
@@ -88,10 +88,29 @@ public class ContactHelper extends HelperBase {
 		submitContactCreation();
 	}
 
+
+	public void modifyContact(int positionOfContact, ContactData newContactData) {
+		initContactModification(positionOfContact);
+		fillContactForm(newContactData, false);
+		submitContactModification();
+		goToHomePage();
+	}
+
+	public void goToHomePage() {
+		click(By.linkText("home page"));
+	}
+
+	public void setShortImplicityWait() {
+		wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+	}
+
+	public void setLongImlicityWait() {
+		wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	}
+
 	public void waitForLoadingHomePage() {
-			wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			wd.findElement(By.id("maintable"));
-			wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		setLongImlicityWait();
+		wd.findElement(By.id("maintable")).click();
 	}
 
 	public boolean isThereAContact() {
