@@ -1,14 +1,15 @@
-package ru.swt.addressbook.tests;
+package ru.swt.addressbook.tests.contacts;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.swt.addressbook.model.ContactData;
 import ru.swt.addressbook.model.Contacts;
+import ru.swt.addressbook.tests.TestBase;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactModificationTests extends TestBase {
+public class ContactDeletionTests extends TestBase {
 
 	@BeforeMethod
 	public void ensurePreconditions() {
@@ -26,24 +27,16 @@ public class ContactModificationTests extends TestBase {
 	}
 
 	@Test
-	public void testContactModification() {
+	public void testContactDelete() {
+
 		Contacts before = app.contact().all();
-		ContactData modifiedContact = before.iterator().next();
-		ContactData newContactData = new ContactData()
-						.withId(modifiedContact.getId())
-						.withFirstName("First Name2")
-						.withLastName("Last Name2")
-						.withAddress("Address2")
-						.withEmail("Test@email.com2")
-						.withMobilePhone("Test Phone22")
-						.withGroup("test12");
+		ContactData deletedContact = before.iterator().next();
 
-		app.contact().modify(modifiedContact, newContactData);
-		app.contact().waitForLoadingHomePage();
+		app.contact().delete(deletedContact);
 
-		assertThat(app.contact().count(), equalTo(before.size()));
+		assertThat(app.contact().count(), equalTo(before.size() - 1));
 		Contacts after = app.contact().all();
 		app.contact().setShortImplicityWait();
-		assertThat(after, equalTo(after.withModified(modifiedContact, newContactData)));
+		assertThat(after, equalTo(before.without(deletedContact)));
 	}
 }
