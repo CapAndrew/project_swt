@@ -5,41 +5,38 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.swt.addressbook.model.ContactData;
 
-import java.util.List;
+import java.util.Set;
 
 public class ContactDeletionTests extends TestBase {
 
 	@BeforeMethod
 	public void ensurePreconditions() {
-		if (app.contact().list().size() == 0) {
+		if (app.contact().all().size() == 0) {
 			app.contact().create(new ContactData()
-							.withFirstName("First Name")
-							.withLastName("Last Name")
-							.withAddress("Address")
-							.withEmail("Test@email.com")
-							.withMobilePhone("Test Phone2")
-							.withGroup("test1"),
+											.withFirstName("First Name")
+											.withLastName("Last Name")
+											.withAddress("Address")
+											.withEmail("Test@email.com")
+											.withMobilePhone("Test Phone2")
+											.withGroup("test1"),
 							true);
 			app.goTO().homePage();
 		}
 	}
 
 	@Test
-	public void testContactDelete() throws InterruptedException {
+	public void testContactDelete() {
 
-		List<ContactData> before = app.contact().list();
-		int index = before.size() - 1;
+		Set<ContactData> before = app.contact().all();
+		ContactData deletedContact = before.iterator().next();
 
-		app.contact().select(index);
-		app.contact().delete();
-		app.contact().submitDeletion();
-		app.contact().waitForLoadingHomePage();
+		app.contact().delete(deletedContact);
 
-		List<ContactData> after = app.contact().list();
+		Set<ContactData> after = app.contact().all();
 		app.contact().setShortImplicityWait();
 		Assert.assertEquals(after.size(), before.size() - 1);
 
-		before.remove(index);
+		before.remove(deletedContact);
 		Assert.assertEquals(before, after);
 	}
 }

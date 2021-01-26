@@ -5,29 +5,29 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.swt.addressbook.model.GroupData;
 
-import java.util.List;
+import java.util.Set;
 
 public class GroupDeletionTests extends TestBase {
 
 	@BeforeMethod
-	public void ensurePreconditions(){
+	public void ensurePreconditions() {
 		app.goTO().groupPage();
-		if (app.group().list().size() == 0) {
-			app.group().createGroup(new GroupData().setName("test3").setHeader("test2").setFooter("test3"));
+		if (app.group().all().size() == 0) {
+			app.group().createGroup(new GroupData().withName("test3").withHeader("test2").withFooter("test3"));
 		}
 	}
 
 	@Test
 	public void testGroupDelete() throws Exception {
-		List<GroupData> before = app.group().list();
-		int index = before.size() - 1;
+		Set<GroupData> before = app.group().all();
+		GroupData deletedGroup = before.iterator().next();
 
-		app.group().delete(index);
+		app.group().delete(deletedGroup);
 
-		List<GroupData> after = app.group().list();
-		Assert.assertEquals(after.size(), index);
+		Set<GroupData> after = app.group().all();
+		Assert.assertEquals(after.size(), before.size() - 1);
 
-		before.remove(index);
+		before.remove(deletedGroup);
 		Assert.assertEquals(before, after);
 	}
 }
