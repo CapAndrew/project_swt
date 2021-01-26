@@ -24,7 +24,6 @@ public class ContactCreationTests extends TestBase {
 						.withGroup("test1");
 
 		app.contact().create(contact, true);
-		app.contact().returnToHomePage();
 
 		Contacts after = app.contact().all();
 		assertThat(after.size(), equalTo(before.size() + 1));
