@@ -1,42 +1,44 @@
 package ru.swt.addressbook.model;
 
 public class GroupData {
-	private int id;
-	private final String name;
-	private final String header;
-	private final String footer;
+	private int id = 0;
+	private String name;
+	private String header;
+	private String footer;
 
-	public GroupData(int id, String name, String header, String footer) {
+	public GroupData setId(int id) {
 		this.id = id;
-		this.name = name;
-		this.header = header;
-		this.footer = footer;
+		return this;
 	}
 
-	public GroupData(String name, String header, String footer) {
-		this.id = 0;
+	public GroupData setName(String name) {
 		this.name = name;
+		return this;
+	}
+
+	public GroupData setHeader(String header) {
 		this.header = header;
+		return this;
+	}
+
+	public GroupData setFooter(String footer) {
 		this.footer = footer;
+		return this;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
+	public String withName() {
 		return name;
 	}
 
-	public String getHeader() {
+	public String withHeader() {
 		return header;
 	}
 
-	public String getFooter() {
+	public String withFooter() {
 		return footer;
 	}
 
