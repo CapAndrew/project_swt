@@ -26,6 +26,8 @@ public class ContactData {
 	private String dayOfAnniversary;
 	private String monthOfAnniversary;
 	private String yearOfAnniversary;
+	private String allPhones;
+	private String allEmails;
 	private String group;
 
 	public ContactData withId(int id) {
@@ -158,6 +160,16 @@ public class ContactData {
 		return this;
 	}
 
+	public ContactData withAllPhones(String allPhones) {
+		this.allPhones = allPhones;
+		return this;
+	}
+
+	public ContactData withAllEmails(String allEmails) {
+		this.allEmails = allEmails;
+		return this;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -260,6 +272,14 @@ public class ContactData {
 
 	public String getGroup() {
 		return group;
+	}
+
+	public String getAllPhones() {
+		return allPhones;
+	}
+
+	public String getAllEmails() {
+		return allEmails;
 	}
 
 	@Override
