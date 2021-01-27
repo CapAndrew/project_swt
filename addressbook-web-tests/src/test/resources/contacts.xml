@@ -1,0 +1,72 @@
+<list>
+  <group>
+    <firstName>Firstname 0</firstName>
+    <lastName>Lastname 0</lastName>
+    <address>Address with line 0</address>
+    <homePhone>+79137777770</homePhone>
+    <email>simple0@email.com</email>
+  </group>
+  <group>
+    <firstName>Firstname 1</firstName>
+    <lastName>Lastname 1</lastName>
+    <address>Address with line 1</address>
+    <homePhone>+79137777771</homePhone>
+    <email>simple1@email.com</email>
+  </group>
+  <group>
+    <firstName>Firstname 2</firstName>
+    <lastName>Lastname 2</lastName>
+    <address>Address with line 2</address>
+    <homePhone>+79137777772</homePhone>
+    <email>simple2@email.com</email>
+  </group>
+  <group>
+    <firstName>Firstname 3</firstName>
+    <lastName>Lastname 3</lastName>
+    <address>Address with line 3</address>
+    <homePhone>+79137777773</homePhone>
+    <email>simple3@email.com</email>
+  </group>
+  <group>
+    <firstName>Firstname 4</firstName>
+    <lastName>Lastname 4</lastName>
+    <address>Address with line 4</address>
+    <homePhone>+79137777774</homePhone>
+    <email>simple4@email.com</email>
+  </group>
+  <group>
+    <firstName>Firstname 5</firstName>
+    <lastName>Lastname 5</lastName>
+    <address>Address with line 5</address>
+    <homePhone>+79137777775</homePhone>
+    <email>simple5@email.com</email>
+  </group>
+  <group>
+    <firstName>Firstname 6</firstName>
+    <lastName>Lastname 6</lastName>
+    <address>Address with line 6</address>
+    <homePhone>+79137777776</homePhone>
+    <email>simple6@email.com</email>
+  </group>
+  <group>
+    <firstName>Firstname 7</firstName>
+    <lastName>Lastname 7</lastName>
+    <address>Address with line 7</address>
+    <homePhone>+79137777777</homePhone>
+    <email>simple7@email.com</email>
+  </group>
+  <group>
+    <firstName>Firstname 8</firstName>
+    <lastName>Lastname 8</lastName>
+    <address>Address with line 8</address>
+    <homePhone>+79137777778</homePhone>
+    <email>simple8@email.com</email>
+  </group>
+  <group>
+    <firstName>Firstname 9</firstName>
+    <lastName>Lastname 9</lastName>
+    <address>Address with line 9</address>
+    <homePhone>+79137777779</homePhone>
+    <email>simple9@email.com</email>
+  </group>
+</list>
