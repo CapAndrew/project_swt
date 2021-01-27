@@ -1,5 +1,7 @@
 package ru.swt.addressbook.model;
 
+import java.io.File;
+
 public class ContactData {
 	private int id = 0;
 	private String firstName;
@@ -28,6 +30,13 @@ public class ContactData {
 	private String yearOfAnniversary;
 	private String allPhones;
 	private String allEmails;
+	private File photo;
+
+	public ContactData withPhoto(File photo) {
+		this.photo = photo;
+		return this;
+	}
+
 	private String group;
 
 	public ContactData withId(int id) {
@@ -168,6 +177,10 @@ public class ContactData {
 	public ContactData withAllEmails(String allEmails) {
 		this.allEmails = allEmails;
 		return this;
+	}
+
+	public File getPhoto() {
+		return photo;
 	}
 
 	public int getId() {
