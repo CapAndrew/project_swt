@@ -15,6 +15,11 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * working directory must be: C:\GIT\project_swt\addressbook-web-tests
+ * program arguments must be: -f src/test/resources/groups.json -c 3 -d json
+ * */
+
 public class GroupDataGenerator {
 
 	@Parameter(names = "-c", description = "Group count")

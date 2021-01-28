@@ -52,14 +52,14 @@ public class ContactHelper extends HelperBase {
 			type(By.name("email3"), contactData.getEmail3());
 		if (contactData.getHomePage() != null)
 			type(By.name("homepage"), contactData.getHomePage());
-		if (contactData.getDayOfBDay() != null)
-			selectFromList(By.name("bday"), contactData.getDayOfBDay());
+		if (contactData.getDayOfBDay() != 0)
+			selectFromList(By.name("bday"), String.format("%d", contactData.getDayOfBDay()));
 		if (contactData.getMonthOfBDay() != null)
 			selectFromList(By.name("bmonth"), contactData.getMonthOfBDay());
 		if (contactData.getYearOfBDay() != null)
 			type(By.name("byear"), contactData.getYearOfBDay());
-		if (contactData.getDayOfAnniversary() != null)
-			selectFromList(By.name("aday"), contactData.getDayOfAnniversary());
+		if (contactData.getDayOfAnniversary() != 0)
+			selectFromList(By.name("aday"), String.format("%d", contactData.getDayOfAnniversary()));
 		if (contactData.getMonthOfAnniversary() != null)
 			selectFromList(By.name("amonth"), contactData.getMonthOfAnniversary());
 		if (contactData.getYearOfAnniversary() != null)

@@ -7,9 +7,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
-import java.sql.Types;
 
-@XStreamAlias("group")
+@XStreamAlias("contact")
 @Entity
 @Table(name = "addressbook")
 public class ContactData {
@@ -20,94 +19,94 @@ public class ContactData {
 
 	@Expose
 	@Column(name = "firstname")
-	private String firstName;
+	private String firstName = "";
 
 	@Column(name = "middlename")
-	private String middleName;
+	private String middleName = "";
 
 	@Expose
 	@Column(name = "lastname")
-	private String lastName;
+	private String lastName = "";
 
 	@Column(name = "nickname")
-	private String nickName;
+	private String nickName = "";
 
 	@Column(name = "title")
-	private String title;
+	private String title = "";
 
 	@Column(name = "company")
-	private String company;
+	private String company = "";
 
 	@Expose
 	@Column(name = "address")
 	@Type(type = "text")
-	private String address;
+	private String address = "";
 
 	@Expose
 	@Column(name = "home")
 	@Type(type = "text")
-	private String homePhone;
+	private String homePhone = "";
 
 	@Column(name = "mobile")
 	@Type(type = "text")
-	private String mobilePhone;
+	private String mobilePhone = "";
 
 	@Column(name = "work")
 	@Type(type = "text")
-	private String workPhone;
+	private String workPhone = "";
 
 	@Column(name = "fax")
 	@Type(type = "text")
-	private String faxPhone;
+	private String faxPhone = "";
 
 	@Expose
 	@Column(name = "email")
 	@Type(type = "text")
-	private String email;
+	private String email = "";
 
 	@Column(name = "email2")
 	@Type(type = "text")
-	private String email2;
+	private String email2 = "";
 
 	@Column(name = "email3")
 	@Type(type = "text")
-	private String email3;
+	private String email3 = "";
 
 	@Column(name = "homepage")
 	@Type(type = "text")
-	private String homePage;
+	private String homePage = "";
 
 	@Column(name = "address2")
 	@Type(type = "text")
-	private String address2;
+	private String address2 = "";
 
 	@Column(name = "phone2")
 	@Type(type = "text")
-	private String phone2;
+	private String phone2 = "";
 
 	@Column(name = "notes")
 	@Type(type = "text")
-	private String notes;
+	private String notes = "";
 
 	@Column(name = "bday", columnDefinition = "TINYINT")
-	@Type(type = "text")
-	private String dayOfBDay;
+	@Type(type = "org.hibernate.type.IntegerType")
+	private int dayOfBDay = 0;
 
 	@Column(name = "bmonth")
-	private String monthOfBDay;
+	private String monthOfBDay = "-";
 
 	@Column(name = "byear")
-	private String yearOfBDay;
+	private String yearOfBDay = "";
 
 	@Column(name = "aday", columnDefinition = "TINYINT")
-	@Type(type = "text")
-	private String dayOfAnniversary;
+	@Type(type = "org.hibernate.type.IntegerType")
+	private int dayOfAnniversary = 0;
 
 	@Column(name = "amonth")
-	private String monthOfAnniversary;
+	private String monthOfAnniversary = "-";
 
 	@Column(name = "ayear")
-	private String yearOfAnniversary;
+	private String yearOfAnniversary = "";
 
 	@Transient
 	private String group;
@@ -222,7 +221,7 @@ public class ContactData {
 		return this;
 	}
 
-	public ContactData withDayOfBDay(String dayOfBDay) {
+	public ContactData withDayOfBDay(int dayOfBDay) {
 		this.dayOfBDay = dayOfBDay;
 		return this;
 	}
@@ -237,7 +236,7 @@ public class ContactData {
 		return this;
 	}
 
-	public ContactData withDayOfAnniversary(String dayOfAnniversary) {
+	public ContactData withDayOfAnniversary(int dayOfAnniversary) {
 		this.dayOfAnniversary = dayOfAnniversary;
 		return this;
 	}
@@ -268,7 +267,11 @@ public class ContactData {
 	}
 
 	public File getPhoto() {
-		return new File(photo);
+		if (photo != null) {
+			return new File(photo);
+		} else {
+			return null;
+		}
 	}
 
 	public int getId() {
@@ -347,7 +350,7 @@ public class ContactData {
 		return notes;
 	}
 
-	public String getDayOfBDay() {
+	public int getDayOfBDay() {
 		return dayOfBDay;
 	}
 
@@ -359,7 +362,7 @@ public class ContactData {
 		return yearOfBDay;
 	}
 
-	public String getDayOfAnniversary() {
+	public int getDayOfAnniversary() {
 		return dayOfAnniversary;
 	}
 
@@ -384,6 +387,37 @@ public class ContactData {
 	}
 
 	@Override
+	public String toString() {
+		return "ContactData{" +
+						"id=" + id +
+						", firstName='" + firstName + '\'' +
+						", middleName='" + middleName + '\'' +
+						", lastName='" + lastName + '\'' +
+						", nickName='" + nickName + '\'' +
+						", title='" + title + '\'' +
+						", company='" + company + '\'' +
+						", address='" + address + '\'' +
+						", homePhone='" + homePhone + '\'' +
+						", mobilePhone='" + mobilePhone + '\'' +
+						", workPhone='" + workPhone + '\'' +
+						", faxPhone='" + faxPhone + '\'' +
+						", email='" + email + '\'' +
+						", email2='" + email2 + '\'' +
+						", email3='" + email3 + '\'' +
+						", homePage='" + homePage + '\'' +
+						", address2='" + address2 + '\'' +
+						", phone2='" + phone2 + '\'' +
+						", notes='" + notes + '\'' +
+						", dayOfBDay=" + dayOfBDay +
+						", monthOfBDay='" + monthOfBDay + '\'' +
+						", yearOfBDay='" + yearOfBDay + '\'' +
+						", dayOfAnniversary=" + dayOfAnniversary +
+						", monthOfAnniversary='" + monthOfAnniversary + '\'' +
+						", yearOfAnniversary='" + yearOfAnniversary + '\'' +
+						'}';
+	}
+
+	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
@@ -391,8 +425,31 @@ public class ContactData {
 		ContactData that = (ContactData) o;
 
 		if (id != that.id) return false;
+		if (dayOfBDay != that.dayOfBDay) return false;
+		if (dayOfAnniversary != that.dayOfAnniversary) return false;
 		if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-		return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+		if (middleName != null ? !middleName.equals(that.middleName) : that.middleName != null) return false;
+		if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
+		if (nickName != null ? !nickName.equals(that.nickName) : that.nickName != null) return false;
+		if (title != null ? !title.equals(that.title) : that.title != null) return false;
+		if (company != null ? !company.equals(that.company) : that.company != null) return false;
+		if (address != null ? !address.equals(that.address) : that.address != null) return false;
+		if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+		if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
+		if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
+		if (faxPhone != null ? !faxPhone.equals(that.faxPhone) : that.faxPhone != null) return false;
+		if (email != null ? !email.equals(that.email) : that.email != null) return false;
+		if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+		if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
+		if (homePage != null ? !homePage.equals(that.homePage) : that.homePage != null) return false;
+		if (address2 != null ? !address2.equals(that.address2) : that.address2 != null) return false;
+		if (phone2 != null ? !phone2.equals(that.phone2) : that.phone2 != null) return false;
+		if (notes != null ? !notes.equals(that.notes) : that.notes != null) return false;
+		if (monthOfBDay != null ? !monthOfBDay.equals(that.monthOfBDay) : that.monthOfBDay != null) return false;
+		if (yearOfBDay != null ? !yearOfBDay.equals(that.yearOfBDay) : that.yearOfBDay != null) return false;
+		if (monthOfAnniversary != null ? !monthOfAnniversary.equals(that.monthOfAnniversary) : that.monthOfAnniversary != null)
+			return false;
+		return yearOfAnniversary != null ? yearOfAnniversary.equals(that.yearOfAnniversary) : that.yearOfAnniversary == null;
 	}
 
 	@Override
@@ -401,16 +458,27 @@ public class ContactData {
 		result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
 		result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
 		result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+		result = 31 * result + (nickName != null ? nickName.hashCode() : 0);
+		result = 31 * result + (title != null ? title.hashCode() : 0);
+		result = 31 * result + (company != null ? company.hashCode() : 0);
+		result = 31 * result + (address != null ? address.hashCode() : 0);
+		result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+		result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
+		result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
+		result = 31 * result + (faxPhone != null ? faxPhone.hashCode() : 0);
+		result = 31 * result + (email != null ? email.hashCode() : 0);
+		result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+		result = 31 * result + (email3 != null ? email3.hashCode() : 0);
+		result = 31 * result + (homePage != null ? homePage.hashCode() : 0);
+		result = 31 * result + (address2 != null ? address2.hashCode() : 0);
+		result = 31 * result + (phone2 != null ? phone2.hashCode() : 0);
+		result = 31 * result + (notes != null ? notes.hashCode() : 0);
+		result = 31 * result + dayOfBDay;
+		result = 31 * result + (monthOfBDay != null ? monthOfBDay.hashCode() : 0);
+		result = 31 * result + (yearOfBDay != null ? yearOfBDay.hashCode() : 0);
+		result = 31 * result + dayOfAnniversary;
+		result = 31 * result + (monthOfAnniversary != null ? monthOfAnniversary.hashCode() : 0);
+		result = 31 * result + (yearOfAnniversary != null ? yearOfAnniversary.hashCode() : 0);
 		return result;
-	}
-
-	@Override
-	public String toString() {
-		return "ContactData{" +
-						"id=" + id +
-						", firstName='" + firstName + '\'' +
-						", lastName='" + lastName + '\'' +
-						", anniversary='" + dayOfAnniversary + " " + monthOfAnniversary + " " + yearOfAnniversary + '\'' +
-						'}';
 	}
 }
