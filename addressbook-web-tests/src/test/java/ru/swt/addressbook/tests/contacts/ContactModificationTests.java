@@ -19,8 +19,7 @@ public class ContactModificationTests extends TestBase {
 											.withLastName("Last Name")
 											.withAddress("Address")
 											.withEmail("Test@email.com")
-											.withMobilePhone("Test Phone2")
-											.withGroup("test1"),
+											.withMobilePhone("Test Phone2"),
 							true);
 			app.goTO().homePage();
 		}
@@ -36,15 +35,15 @@ public class ContactModificationTests extends TestBase {
 						.withLastName("Last Name2")
 						.withAddress("Address2")
 						.withEmail("Test@email.com2")
-						.withMobilePhone("Test Phone22")
-						.withGroup("test12");
+						.withMobilePhone("Test Phone22");
 
 		app.contact().modify(modifiedContact, newContactData);
 		app.contact().waitForLoadingHomePage();
 
 		Contacts after = app.db().contacts();
 		app.contact().setShortImplicityWait();
-		assertThat(after, equalTo(after.withModified(modifiedContact, newContactData)));
+		assertThat(after, equalTo(before.withModified(modifiedContact, newContactData)));
 		assertThat(app.contact().count(), equalTo(before.size()));
+		verifyContactListInUI();
 	}
 }

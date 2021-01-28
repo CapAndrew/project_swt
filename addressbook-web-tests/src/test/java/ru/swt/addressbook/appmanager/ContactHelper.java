@@ -7,9 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.swt.addressbook.model.ContactData;
 import ru.swt.addressbook.model.Contacts;
+import ru.swt.addressbook.tests.contacts.ContactPhoneTests;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class ContactHelper extends HelperBase {
 
@@ -211,5 +214,24 @@ public class ContactHelper extends HelperBase {
 						.withEmail(email)
 						.withEmail2(email2)
 						.withEmail3(email3);
+	}
+
+
+	public String mergePhones(ContactData contact) {
+		return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
+						.stream().filter((s) -> !s.equals(""))
+						.map(ContactHelper::cleaned)
+						.collect(Collectors.joining("\n"));
+	}
+
+
+	public String mergeEmails(ContactData contact) {
+		return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+						.stream().filter((s) -> !s.equals(""))
+						.collect(Collectors.joining("\n"));
+	}
+
+	public static String cleaned(String phone) {
+		return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
 	}
 }

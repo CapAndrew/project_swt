@@ -33,10 +33,12 @@ public class ContactDeletionTests extends TestBase {
 		ContactData deletedContact = before.iterator().next();
 
 		app.contact().delete(deletedContact);
+		app.contact().waitForLoadingHomePage();
 
 		Contacts after = app.db().contacts();
 		app.contact().setShortImplicityWait();
 		assertThat(after, equalTo(before.without(deletedContact)));
 		assertThat(app.contact().count(), equalTo(before.size() - 1));
+		verifyContactListInUI();
 	}
 }
