@@ -3,52 +3,129 @@ package ru.swt.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
+import java.sql.Types;
 
 @XStreamAlias("group")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
 	@XStreamOmitField
+	@Id
+	@Column(name = "id")
 	private int id = 0;
+
 	@Expose
+	@Column(name = "firstname")
 	private String firstName;
+
+	@Column(name = "middlename")
 	private String middleName;
+
 	@Expose
+	@Column(name = "lastname")
 	private String lastName;
+
+	@Column(name = "nickname")
 	private String nickName;
+
+	@Column(name = "title")
 	private String title;
+
+	@Column(name = "company")
 	private String company;
+
 	@Expose
+	@Column(name = "address")
+	@Type(type = "text")
 	private String address;
+
 	@Expose
+	@Column(name = "home")
+	@Type(type = "text")
 	private String homePhone;
+
+	@Column(name = "mobile")
+	@Type(type = "text")
 	private String mobilePhone;
+
+	@Column(name = "work")
+	@Type(type = "text")
 	private String workPhone;
+
+	@Column(name = "fax")
+	@Type(type = "text")
 	private String faxPhone;
+
 	@Expose
+	@Column(name = "email")
+	@Type(type = "text")
 	private String email;
+
+	@Column(name = "email2")
+	@Type(type = "text")
 	private String email2;
+
+	@Column(name = "email3")
+	@Type(type = "text")
 	private String email3;
+
+	@Column(name = "homepage")
+	@Type(type = "text")
 	private String homePage;
+
+	@Column(name = "address2")
+	@Type(type = "text")
 	private String address2;
+
+	@Column(name = "phone2")
+	@Type(type = "text")
 	private String phone2;
+
+	@Column(name = "notes")
+	@Type(type = "text")
 	private String notes;
+
+	@Column(name = "bday", columnDefinition = "TINYINT")
+	@Type(type = "text")
 	private String dayOfBDay;
+
+	@Column(name = "bmonth")
 	private String monthOfBDay;
+
+	@Column(name = "byear")
 	private String yearOfBDay;
+
+	@Column(name = "aday", columnDefinition = "TINYINT")
+	@Type(type = "text")
 	private String dayOfAnniversary;
+
+	@Column(name = "amonth")
 	private String monthOfAnniversary;
+
+	@Column(name = "ayear")
 	private String yearOfAnniversary;
+
+	@Transient
+	private String group;
+
+	@Transient
 	private String allPhones;
+
+	@Transient
 	private String allEmails;
-	private File photo;
+
+	@Column(name = "photo")
+	@Type(type = "text")
+	private String photo;
 
 	public ContactData withPhoto(File photo) {
-		this.photo = photo;
+		this.photo = photo.getPath();
 		return this;
 	}
-
-	private String group;
 
 	public ContactData withId(int id) {
 		this.id = id;
@@ -191,7 +268,7 @@ public class ContactData {
 	}
 
 	public File getPhoto() {
-		return photo;
+		return new File(photo);
 	}
 
 	public int getId() {
@@ -333,6 +410,7 @@ public class ContactData {
 						"id=" + id +
 						", firstName='" + firstName + '\'' +
 						", lastName='" + lastName + '\'' +
+						", anniversary='" + dayOfAnniversary + " " + monthOfAnniversary + " " + yearOfAnniversary + '\'' +
 						'}';
 	}
 }
