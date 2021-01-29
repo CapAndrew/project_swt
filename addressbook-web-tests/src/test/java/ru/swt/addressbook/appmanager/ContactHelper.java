@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.swt.addressbook.model.ContactData;
 import ru.swt.addressbook.model.Contacts;
-import ru.swt.addressbook.tests.contacts.ContactPhoneTests;
+import ru.swt.addressbook.model.GroupData;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,15 +56,15 @@ public class ContactHelper extends HelperBase {
 		if (contactData.getHomePage() != null)
 			type(By.name("homepage"), contactData.getHomePage());
 		if (contactData.getDayOfBDay() != 0)
-			selectFromList(By.name("bday"), String.format("%d", contactData.getDayOfBDay()));
+			selectFromListByName(By.name("bday"), String.format("%d", contactData.getDayOfBDay()));
 		if (contactData.getMonthOfBDay() != null)
-			selectFromList(By.name("bmonth"), contactData.getMonthOfBDay());
+			selectFromListByName(By.name("bmonth"), contactData.getMonthOfBDay());
 		if (contactData.getYearOfBDay() != null)
 			type(By.name("byear"), contactData.getYearOfBDay());
 		if (contactData.getDayOfAnniversary() != 0)
-			selectFromList(By.name("aday"), String.format("%d", contactData.getDayOfAnniversary()));
+			selectFromListByName(By.name("aday"), String.format("%d", contactData.getDayOfAnniversary()));
 		if (contactData.getMonthOfAnniversary() != null)
-			selectFromList(By.name("amonth"), contactData.getMonthOfAnniversary());
+			selectFromListByName(By.name("amonth"), contactData.getMonthOfAnniversary());
 		if (contactData.getYearOfAnniversary() != null)
 			type(By.name("ayear"), contactData.getYearOfAnniversary());
 		if (contactData.getAddress2() != null)
@@ -89,7 +89,7 @@ public class ContactHelper extends HelperBase {
 		click(By.linkText("add new"));
 	}
 
-	public void selectById(int id) {
+	public void selectContactById(int id) {
 		wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
 	}
 
@@ -128,7 +128,7 @@ public class ContactHelper extends HelperBase {
 
 
 	public void delete(ContactData deletedContact) {
-		selectById(deletedContact.getId());
+		selectContactById(deletedContact.getId());
 		deleteSelectedContact();
 		submitDeletion();
 		contactCache = null;
@@ -136,6 +136,9 @@ public class ContactHelper extends HelperBase {
 	}
 
 	public void returnToHomePage() {
+		if (isElementPresent(By.id("maintable"))) {
+			return;
+		}
 		click(By.linkText("home page"));
 	}
 
@@ -217,6 +220,35 @@ public class ContactHelper extends HelperBase {
 						.withEmail3(email3);
 	}
 
+	public void addContactToGroup(ContactData contact, GroupData group) {
+		selectContactById(contact.getId());
+		selectGroupToAddById(group.getId());
+		clickByAddTo();
+		wd.navigate().back();
+	}
+
+	public void deleteContactFromGroup(ContactData before, GroupData group) {
+		selectGroupById(group.getId());
+		selectContactById(before.getId());
+		clickByRemoveFrom();
+		wd.navigate().back();
+	}
+
+	private void selectGroupById(int value) {
+		selectFromListByValue(By.name("group"), ""+value);
+	}
+
+	private void clickByAddTo() {
+		click(By.name("add"));
+	}
+
+	private void clickByRemoveFrom() {
+		click(By.name("remove"));
+	}
+
+	private void selectGroupToAddById(int value) {
+		selectFromListByValue(By.name("to_group"), ""+value);
+	}
 
 	public String mergePhones(ContactData contact) {
 		return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())

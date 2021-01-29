@@ -8,9 +8,13 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.swt.addressbook.model.ContactData;
+import ru.swt.addressbook.model.Contacts;
 import ru.swt.addressbook.model.GroupData;
+import ru.swt.addressbook.model.Groups;
 
 import java.util.List;
+
+import static ru.swt.addressbook.tests.TestBase.app;
 
 public class HbConnectionTest {
 
@@ -23,24 +27,22 @@ public class HbConnectionTest {
 						.configure() // configures settings from hibernate.cfg.xml
 						.build();
 		try {
-			sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
-		}
-		catch (Exception e) {
+			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+		} catch (Exception e) {
 			// The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
 			// so destroy it manually.
 			e.printStackTrace();
-			StandardServiceRegistryBuilder.destroy( registry );
+			StandardServiceRegistryBuilder.destroy(registry);
 		}
 	}
 
 
-
 	@Test
-	public void testHbGroupConnection(){
+	public void testHbGroupConnection() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		List<GroupData> result = session.createQuery( "from GroupData" ).list();
-		for ( GroupData group : result ) {
+		List<GroupData> result = session.createQuery("from GroupData").list();
+		for (GroupData group : result) {
 			System.out.println(group);
 			System.out.println(group.getContacts());
 		}
@@ -49,11 +51,11 @@ public class HbConnectionTest {
 	}
 
 	@Test
-	public void testHbContactConnection(){
+	public void testHbContactConnection() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		List<ContactData> result = session.createQuery( "from ContactData where deprecated = '0000-00-00'" ).list();
-		for ( ContactData contact : result ) {
+		List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
+		for (ContactData contact : result) {
 			System.out.println(contact);
 			System.out.println(contact.getGroups());
 		}

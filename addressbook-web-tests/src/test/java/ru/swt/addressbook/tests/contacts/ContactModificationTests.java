@@ -21,7 +21,7 @@ public class ContactModificationTests extends TestBase {
 											.withEmail("Test@email.com")
 											.withMobilePhone("Test Phone2"),
 							true);
-			app.goTO().homePage();
+			app.contact().returnToHomePage();
 		}
 	}
 

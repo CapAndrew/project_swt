@@ -36,9 +36,14 @@ public class HelperBase {
 		wd.findElement(locator).click();
 	}
 
-	public void selectFromList(By locator, String text) {
+	public void selectFromListByName(By locator, String text) {
 		click(locator);
 		new Select(wd.findElement(locator)).selectByVisibleText(text);
+	}
+
+	public void selectFromListByValue(By locator, String value) {
+		click(locator);
+		new Select(wd.findElement(locator)).selectByValue(value);
 	}
 
 	public void acceptAlert() {

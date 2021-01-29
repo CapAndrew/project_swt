@@ -23,7 +23,7 @@ public class ContactPhoneTests extends TestBase {
 											.withMobilePhone("+7 (913) 777 7777")
 											.withWorkPhone("222-22-22"),
 							true);
-			app.goTO().homePage();
+			app.contact().returnToHomePage();
 		}
 	}
 

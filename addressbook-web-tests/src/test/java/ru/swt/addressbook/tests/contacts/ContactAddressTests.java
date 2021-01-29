@@ -23,7 +23,7 @@ public class ContactAddressTests extends TestBase {
 															"Address2 (qwer).\n" +
 															"Address3,asd. asd,asd"),
 							true);
-			app.goTO().homePage();
+			app.contact().returnToHomePage();
 		}
 	}
 

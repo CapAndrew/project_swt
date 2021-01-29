@@ -5,9 +5,6 @@ import org.testng.annotations.Test;
 import ru.swt.addressbook.model.ContactData;
 import ru.swt.addressbook.tests.TestBase;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -26,7 +23,7 @@ public class ContactEmailTests extends TestBase {
 											.withEmail2("test-232@gmail.com")
 											.withEmail3("qweqwe.asdas@asdas-asd.com"),
 							true);
-			app.goTO().homePage();
+			app.contact().returnToHomePage();
 		}
 	}
 
