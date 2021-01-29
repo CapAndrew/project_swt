@@ -19,7 +19,6 @@ public class ContactAddressTests extends TestBase {
 											.withAddress("Address")
 											.withEmail("Test@email.com")
 											.withMobilePhone("Test Phone2")
-											.withGroup("test1")
 											.withAddress("Address1( asdqw-sadasd)\n" +
 															"Address2 (qwer).\n" +
 															"Address3,asd. asd,asd"),

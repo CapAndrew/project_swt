@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.swt.addressbook.model.ContactData;
 import ru.swt.addressbook.model.Contacts;
+import ru.swt.addressbook.model.Groups;
 import ru.swt.addressbook.tests.TestBase;
 
 import java.io.BufferedReader;
@@ -59,9 +60,10 @@ public class ContactCreationTests extends TestBase {
 	@Test(dataProvider = "validContactsFromJson")
 	public void testContactCreation(ContactData contact) {
 		Contacts before = app.db().contacts();
+		Groups groups = app.db().groups();
 
 		app.contact().initNewContactCreation();
-		app.contact().create(contact, true);
+		app.contact().create(contact.inGroup(groups.iterator().next()), true);
 
 		Contacts after = app.db().contacts();
 		assertThat(app.contact().count(), equalTo(before.size() + 1));

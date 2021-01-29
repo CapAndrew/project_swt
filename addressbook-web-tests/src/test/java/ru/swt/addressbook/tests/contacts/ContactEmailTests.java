@@ -22,7 +22,6 @@ public class ContactEmailTests extends TestBase {
 											.withAddress("Address")
 											.withEmail("Test@email.com")
 											.withMobilePhone("Test Phone2")
-											.withGroup("test1")
 											.withEmail("Test@email.com")
 											.withEmail2("test-232@gmail.com")
 											.withEmail3("qweqwe.asdas@asdas-asd.com"),
