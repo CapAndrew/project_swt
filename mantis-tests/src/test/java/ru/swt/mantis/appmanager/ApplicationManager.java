@@ -9,8 +9,12 @@ import org.openqa.selenium.remote.BrowserType;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.MatchResult;
 
 public class ApplicationManager {
 	private final Properties properties;
@@ -19,6 +23,10 @@ public class ApplicationManager {
 	public final long IMPL_TIME = 1;
 
 	private String browser;
+	private RegistrationHelper registrationHelper;
+	private FtpHelper ftp;
+	private MailHelper mailHelper;
+	private JamesHelper jamesHelper;
 
 	public ApplicationManager(String browser) {
 		this.browser = browser;
@@ -28,19 +36,62 @@ public class ApplicationManager {
 	public void init() throws IOException {
 		String target = System.getProperty("target", "local");
 		properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-
-		if (browser.equals(BrowserType.FIREFOX)) {
-			wd = new FirefoxDriver();
-		} else if (browser.equals(BrowserType.CHROME)) {
-			wd = new ChromeDriver();
-		} else if (browser.equals(BrowserType.IE)) {
-			wd = new InternetExplorerDriver();
-		}
-		wd.manage().timeouts().implicitlyWait(IMPL_TIME, TimeUnit.SECONDS);
-		wd.get(properties.getProperty("web.Url"));
 	}
 
 	public void stop() {
-		wd.quit();
+		if(wd != null) {
+			wd.quit();
+		}
+	}
+
+	public HttpSession newSession() throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
+		return new HttpSession(this);
+	}
+
+	public String getProperty(String key) {
+		return properties.getProperty(key);
+	}
+
+	public RegistrationHelper registration() {
+		if(registrationHelper == null) {
+			registrationHelper = new RegistrationHelper(this);
+		}
+		return registrationHelper;
+	}
+
+	public FtpHelper ftp(){
+		if(ftp == null) {
+			ftp = new FtpHelper(this);
+		}
+		return ftp;
+	}
+
+	public MailHelper mail(){
+		if(mailHelper == null){
+			mailHelper = new MailHelper(this);
+		}
+		return mailHelper;
+	}
+
+	public JamesHelper james(){
+		if(jamesHelper == null) {
+			jamesHelper = new JamesHelper(this);
+		}
+		return jamesHelper;
+	}
+
+	public WebDriver getDriver() {
+		if(wd == null){
+			if (browser.equals(BrowserType.FIREFOX)) {
+				wd = new FirefoxDriver();
+			} else if (browser.equals(BrowserType.CHROME)) {
+				wd = new ChromeDriver();
+			} else if (browser.equals(BrowserType.IE)) {
+				wd = new InternetExplorerDriver();
+			}
+			wd.manage().timeouts().implicitlyWait(IMPL_TIME, TimeUnit.SECONDS);
+			wd.get(properties.getProperty("web.Url"));
+		}
+		return wd;
 	}
 }
