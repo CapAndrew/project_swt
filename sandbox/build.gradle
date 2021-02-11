@@ -11,5 +11,6 @@ dependencies {
 }
 
 test {
-    useTestNG()
+  // enable TestNG support (default is JUnit)
+  useTestNG()
 }
