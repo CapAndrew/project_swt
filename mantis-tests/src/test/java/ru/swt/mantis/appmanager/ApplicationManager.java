@@ -14,7 +14,6 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.MatchResult;
 
 public class ApplicationManager {
 	private final Properties properties;
@@ -31,6 +30,7 @@ public class ApplicationManager {
 	private SessionHelper sessionHelper;
 	private UsersHelper usersHelper;
 	private DbHelper dbHelper;
+	private SoapHelper soaphelper;
 
 	public ApplicationManager(String browser) {
 		this.browser = browser;
@@ -110,6 +110,13 @@ public class ApplicationManager {
 			dbHelper = new DbHelper();
 		}
 		return dbHelper;
+	}
+
+	public SoapHelper soap(){
+		if(soaphelper == null){
+			soaphelper = new SoapHelper(this);
+		}
+		return soaphelper;
 	}
 
 	public WebDriver getDriver() {
