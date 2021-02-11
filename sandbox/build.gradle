@@ -1,6 +1,5 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "MyFirstProgram"
 
 repositories {
     mavenCentral()
@@ -11,6 +10,5 @@ dependencies {
 }
 
 test {
-  // enable TestNG support (default is JUnit)
-  useTestNG()
+    useTestNG()
 }
