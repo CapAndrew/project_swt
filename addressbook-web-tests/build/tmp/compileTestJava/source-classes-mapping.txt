@@ -1,0 +1,56 @@
+ru/swt/addressbook/tests/contacts/ContactAddressTests.java
+ ru.swt.addressbook.tests.contacts.ContactAddressTests
+ru/swt/addressbook/model/Groups.java
+ ru.swt.addressbook.model.Groups
+ru/swt/addressbook/tests/groups/GroupCreationTests.java
+ ru.swt.addressbook.tests.groups.GroupCreationTests
+ ru.swt.addressbook.tests.groups.GroupCreationTests$1
+ru/swt/addressbook/model/GroupData.java
+ ru.swt.addressbook.model.GroupData
+ru/swt/addressbook/tests/HbConnectionTest.java
+ ru.swt.addressbook.tests.HbConnectionTest
+ru/swt/addressbook/tests/contacts/ContactToGroupAdditionTests.java
+ ru.swt.addressbook.tests.contacts.ContactToGroupAdditionTests
+ru/swt/addressbook/tests/contacts/ContactCreationTests.java
+ ru.swt.addressbook.tests.contacts.ContactCreationTests
+ ru.swt.addressbook.tests.contacts.ContactCreationTests$1
+ru/swt/addressbook/appmanager/SessionHelper.java
+ ru.swt.addressbook.appmanager.SessionHelper
+ru/swt/addressbook/tests/contacts/ContactEmailTests.java
+ ru.swt.addressbook.tests.contacts.ContactEmailTests
+ru/swt/addressbook/tests/contacts/ContactFromGroupDeletionTests.java
+ ru.swt.addressbook.tests.contacts.ContactFromGroupDeletionTests
+ru/swt/addressbook/generators/GroupDataGenerator.java
+ ru.swt.addressbook.generators.GroupDataGenerator
+ru/swt/addressbook/appmanager/NavigationHelper.java
+ ru.swt.addressbook.appmanager.NavigationHelper
+ru/swt/addressbook/model/Contacts.java
+ ru.swt.addressbook.model.Contacts
+ru/swt/addressbook/tests/DbConnectionTest.java
+ ru.swt.addressbook.tests.DbConnectionTest
+ru/swt/addressbook/tests/contacts/ContactDeletionTests.java
+ ru.swt.addressbook.tests.contacts.ContactDeletionTests
+ru/swt/addressbook/generators/ContactDataGenerator.java
+ ru.swt.addressbook.generators.ContactDataGenerator
+ru/swt/addressbook/appmanager/HelperBase.java
+ ru.swt.addressbook.appmanager.HelperBase
+ru/swt/addressbook/tests/contacts/ContactPhoneTests.java
+ ru.swt.addressbook.tests.contacts.ContactPhoneTests
+ru/swt/addressbook/appmanager/ContactHelper.java
+ ru.swt.addressbook.appmanager.ContactHelper
+ru/swt/addressbook/appmanager/DbHelper.java
+ ru.swt.addressbook.appmanager.DbHelper
+ru/swt/addressbook/tests/TestBase.java
+ ru.swt.addressbook.tests.TestBase
+ru/swt/addressbook/appmanager/ApplicationManager.java
+ ru.swt.addressbook.appmanager.ApplicationManager
+ru/swt/addressbook/tests/groups/GroupModificationTests.java
+ ru.swt.addressbook.tests.groups.GroupModificationTests
+ru/swt/addressbook/tests/contacts/ContactModificationTests.java
+ ru.swt.addressbook.tests.contacts.ContactModificationTests
+ru/swt/addressbook/model/ContactData.java
+ ru.swt.addressbook.model.ContactData
+ru/swt/addressbook/appmanager/GroupHelper.java
+ ru.swt.addressbook.appmanager.GroupHelper
+ru/swt/addressbook/tests/groups/GroupDeletionTests.java
+ ru.swt.addressbook.tests.groups.GroupDeletionTests

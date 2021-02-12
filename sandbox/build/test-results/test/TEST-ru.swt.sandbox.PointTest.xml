@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.swt.sandbox.PointTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-02-11T18:03:44" hostname="COMP3194" time="0.008">
+  <properties/>
+  <testcase name="testDistanceBetweenPointsWithNegativeCoordinates" classname="ru.swt.sandbox.PointTest" time="0.006"/>
+  <testcase name="testDistanceBetweenPointsWithPositivesCoordinates" classname="ru.swt.sandbox.PointTest" time="0.0"/>
+  <testcase name="testDistanceBetweenPointsWithSimilarCoordinates" classname="ru.swt.sandbox.PointTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
