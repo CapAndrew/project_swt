@@ -37,6 +37,7 @@ public class ApplicationManager {
 		dbHelper = new DbHelper();
 
 		if (browser.equals(BrowserType.FIREFOX)) {
+			System.setProperty("webdriver.gecko.driver", "C:\\geccodriver\\geckodriver.exe");
 			wd = new FirefoxDriver();
 		} else if (browser.equals(BrowserType.CHROME)) {
 			wd = new ChromeDriver();
